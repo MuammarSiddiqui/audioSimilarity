@@ -1,0 +1,26 @@
+Audio Comparison API
+This is a Flask API for comparing two audio files using the MFCC feature extraction technique and cosine similarity.
+
+Requirements
+Python verion 3.7 - 3.10
+librosa
+numpy
+scipy
+Flask
+Flask-CORS
+scikit-learn
+
+
+To Run Audio.py 
+open cmd in folder containing that file and type: python audio.py
+
+
+To run frontend 
+
+simply use vs code live server incase it doesn't run follow the steps below
+
+run command:
+npm install --global serve in cmd
+
+Open Command Prompt in the project folder and run the following command:
+npx serve
