@@ -1,15 +1,51 @@
-<div class="audio-comparison">
-  <h1>Compare Audio Files</h1>
-  <div class="audio-inputs">
-    <div class="audio-input">
-      <label for="audio-file-1">Audio File 1:</label>
-      <input type="file" id="audio-file-1" (change)="onFileChange(1, $event)" accept=".mp3">
-    </div>
-    <div class="audio-input">
-      <label for="audio-file-2">Audio File 2:</label>
-      <input type="file" id="audio-file-2" (change)="onFileChange(2, $event)" accept=".mp3">
+<div class="container">
+  <div class="card">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="card-inner">
+      <div class="audio-comparison" *ngIf="!loading">
+        <h1>Compare Audio Files</h1>
+        <div class="audio-inputs">
+          <div class="audio-input">
+            <label for="audio-file-1">Audio File 1:</label>
+            <input
+              type="file"
+              id="audio-file-1"
+              class="file-block"
+              (change)="onFileChange(1, $event)"
+              accept=".mp3"
+            />
+            <small *ngIf="error1">Please select a file...</small>
+          </div>
+          <div class="audio-input">
+            <label for="audio-file-2">Audio File 2:</label>
+            <input
+              type="file"
+              id="audio-file-2"
+              class="file-block"
+              (change)="onFileChange(2, $event)"
+              accept=".mp3"
+            />
+            <small *ngIf="error2">Please select a file...</small>
+          </div>
+        </div>
+        <!-- <button class="compare-button" >Compare</button> -->
+        <button class="button" (click)="onCompare()">
+          <span class="button_lg">
+            <span class="button_sl"></span>
+            <span class="button_text">Compare</span>
+          </span>
+        </button>
+        <p class="similarity-score" *ngIf="similarityScore">
+          Similarity score: {{ similarityScore }}
+        </p>
+        <p class="similarity-score" *ngIf="error3" style="color: red">
+          Something went wrong
+        </p>
+      </div>
+      <div class="loader" *ngIf="loading">
+        <div class="justify-content-center jimu-primary-loading"></div>
+      </div>
     </div>
   </div>
-  <button class="compare-button" (click)="onCompare()">Compare</button>
-  <p class="similarity-score" *ngIf="similarityScore">Similarity score: {{ similarityScore }}</p>
 </div>
